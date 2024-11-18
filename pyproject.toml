@@ -1,0 +1,67 @@
+[project]
+name = "arcade-new-game"
+version = "0.0.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.12,<3.13"
+dependencies = [
+    "arcade>=3.0.0.dev39",
+]
+
+[tool.uv]
+prerelease = "allow"
+
+[bumpver]
+current_version = "0.0.0"
+version_pattern = "MAJOR.MINOR[.PATCH]"
+commit = true
+tag = true
+push = true
+
+[bumpver.file_patterns]
+"pyproject.toml" = [
+    '^version = "{version}"',
+    '^current_version = "{version}"',
+]
+"mygame/version.py" = [
+    'version = "{version}"',
+]
+
+[dependency-groups]
+dev = [
+    "bumpver>=2024.1130",
+    "cx-freeze>=7.2.5",
+    "pyinstaller>=6.11.1",
+    "ruff>=0.7.4",
+]
+
+# Configuration for cx_freeze, used for Windows and Mac builds
+[[tool.cxfreeze.executables]]
+base = "gui"
+icon = "mygame/resources/logo.ico"
+script = "mygame/__main__.py"
+target_name = "MyGame"
+shortcut_name = "MyGame"
+shortcut_dir = "MyProgramMenu"
+
+[tool.cxfreeze.build_exe]
+excludes = [
+    "tkinter",
+    "unittest",
+    "pytest",
+    "arcade.resources.assets",
+    "arcade.examples",
+    "setuptools",
+    "numpy",
+    "email",
+    "imgui_bundle"
+]
+build_exe = "build/exe"
+
+[tool.cxfreeze.bdist_mac]
+bundle_name = "MyGame"
+iconfile = "mygame/resources/logo.ico"
+
+[tool.cxfreeze.bdist_dmg]
+volume_label = "MyGame"
+applications_shortcut = true
