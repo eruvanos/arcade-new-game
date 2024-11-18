@@ -1,6 +1,6 @@
 [project]
 name = "arcade-new-game"
-version = "0.0.0"
+version = "0.0.1"
 description = "Add your description here"
 readme = "README.md"
 requires-python = ">=3.12,<3.13"
@@ -12,7 +12,7 @@ dependencies = [
 prerelease = "allow"
 
 [bumpver]
-current_version = "0.0.0"
+current_version = "0.0.1"
 version_pattern = "MAJOR.MINOR[.PATCH]"
 commit = true
 tag = true
