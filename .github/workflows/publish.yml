@@ -46,7 +46,7 @@ jobs:
           ARCADE_HEADLESS: True
         run: |
           sudo apt update
-          sudo apt install python3-pip mesa-utils libegl1-mesa xvfb
+          sudo apt install python3-pip mesa-utils xvfb
           uv run pyinstaller \
           --onefile \
           -y \
